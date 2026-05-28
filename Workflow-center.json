@@ -1,0 +1,996 @@
+{
+  "name": "Workflow-center",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -736,
+        144
+      ],
+      "id": "2fca29d2-7a52-47b7-a4e0-f4dbc46f9245",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "content": "## Shedule trigger \n\n### Ejecución de mi flujo cada cierto tiempo.\n",
+        "height": 112,
+        "width": 272
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -784,
+        -64
+      ],
+      "typeVersion": 1,
+      "id": "810adb22-de50-48b2-a7f6-23d99f7ed3fe",
+      "name": "Sticky Note",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b2064b71-ea7b-4596-b233-4e021b19b91c",
+              "name": "id",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "e9306f07-d476-4d93-b414-78e13d7b9283",
+              "name": "dni",
+              "value": "={{ $json.dni }}",
+              "type": "number"
+            },
+            {
+              "id": "a6119c8c-b485-44f7-b04b-af54c4e39818",
+              "name": "first_name",
+              "value": "={{ $json.first_name }}",
+              "type": "string"
+            },
+            {
+              "id": "9e23b3ae-2146-428c-8138-cd3afe1d6bfe",
+              "name": "birth_date",
+              "value": "={{ $json.birth_date }}",
+              "type": "string"
+            },
+            {
+              "id": "5dd7a489-2a83-4d8c-ace8-0e94a1dede9d",
+              "name": "gender",
+              "value": "={{ $json.gender }}",
+              "type": "string"
+            },
+            {
+              "id": "026a7c0a-f46c-4ad3-8bc3-7e9bee1b1ede",
+              "name": "neighborhood",
+              "value": "={{ $json.neighborhood }}",
+              "type": "string"
+            },
+            {
+              "id": "5a8038c9-f3b6-4bd5-90e1-d6d8267a175c",
+              "name": "created_at",
+              "value": "={{ $json.created_at }}",
+              "type": "string"
+            },
+            {
+              "id": "70856bc3-3120-4593-9209-c5ac4044fa53",
+              "name": "last_name",
+              "value": "={{ $json.last_name }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -288,
+        144
+      ],
+      "id": "f6ff133d-05cb-43c8-ad17-ca8350e07fd4",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "language": "pythonNative",
+        "pythonCode": "# Loop over input items and add a new field called 'my_new_field' to the JSON of each one\nfor item in _items:\n  item[\"json\"][\"my_new_field\"] = 1\nreturn _items"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -64,
+        144
+      ],
+      "id": "a5612bf7-8aa3-4b97-9905-7a4ca21bab46",
+      "name": "Code in Python"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "18AmMao31_e8_-zchu8t7H7wpadOp2M4hulE4ls2E9po",
+          "mode": "list",
+          "cachedResultName": "Clientes_centros",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/18AmMao31_e8_-zchu8t7H7wpadOp2M4hulE4ls2E9po/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 954126320,
+          "mode": "list",
+          "cachedResultName": "people-export-2026-05-26_12-58-27",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/18AmMao31_e8_-zchu8t7H7wpadOp2M4hulE4ls2E9po/edit#gid=954126320"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "p28",
+            "birth_date": "2003-10-04",
+            "created_at": "={{ $now }}",
+            "dni": "3789456",
+            "first_name": "Morena ",
+            "last_name": "Lopez",
+            "gender": "F",
+            "neighborhood": "Pasaje italia"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "dni",
+              "displayName": "dni",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "first_name",
+              "displayName": "first_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "last_name",
+              "displayName": "last_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "birth_date",
+              "displayName": "birth_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "gender",
+              "displayName": "gender",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "neighborhood",
+              "displayName": "neighborhood",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        608,
+        48
+      ],
+      "id": "e6b33c41-3930-4a22-8014-8669a4a22b97",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "d0ab5Y6R9vmHtYdu",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Añadir cliente\n\n### Si el flujo detecta que los registros estan bien detallados, puedo agregar uno nuevo al sheet.",
+        "height": 144,
+        "width": 288
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        512,
+        -160
+      ],
+      "typeVersion": 1,
+      "id": "a0098cc3-0fbf-428a-b88c-113be26697a3",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "{\n  \"Estado_final\": \"Procesado\",\n  \"Fecha_procesamiento\": '{{$now}}'\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        832,
+        48
+      ],
+      "id": "5df2acf7-d055-4c69-b06c-949daa9a0103",
+      "name": "Edit Fields1",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "sendTo": "juanjo.okyt@gmail.com",
+        "subject": "Cliente registrado!",
+        "message": "=<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"UTF-8\">\n</head>\n\n<body style=\"font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;\">\n\n  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">\n    <tr>\n      <td align=\"center\">\n\n        <table width=\"650\" cellpadding=\"0\" cellspacing=\"0\"\n        style=\"background-color: #ffffff; border-radius: 12px; padding: 30px; box-shadow: 0px 0px 12px rgba(0,0,0,0.1);\">\n\n          <tr>\n            <td align=\"center\">\n\n              <h1 style=\"color: #2e7d32;\">\n                ✅ Cliente registrado correctamente\n              </h1>\n\n              <p style=\"font-size: 16px; color: #555;\">\n                El flujo ETL procesó y almacenó correctamente un nuevo registro en la base de datos.\n              </p>\n\n              <hr style=\"margin: 25px 0; border: none; border-top: 1px solid #ddd;\">\n\n              <h2 style=\"color: #333;\">\n                📋 Datos del cliente\n              </h2>\n\nDNI = {{ $('Append row in sheet').item.json.dni }}, \n\nID = {{ $('Append row in sheet').item.json.id }},\n\nNombre = {{ $('Append row in sheet').item.json.first_name }},\n\nApellido = {{ $('Append row in sheet').item.json.last_name }},\n\nGenero = {{ $('Append row in sheet').item.json.gender }},\n\nFecha de nacimiento = {{ $('Append row in sheet').item.json.birth_date }},\n\nVecindario = {{ $('Append row in sheet').item.json.neighborhood }},\n\nFecha de consulta = {{ $('Append row in sheet').item.json.created_at }}\n\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        1280,
+        -48
+      ],
+      "id": "c1b341be-85a7-4074-a438-9f8abe124eb5",
+      "name": "Send a message",
+      "webhookId": "11a3c854-7747-4755-8522-edc62057656f",
+      "executeOnce": true,
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "aQ0vcc2VYzLRqx9v",
+          "name": "Gmail OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "18AmMao31_e8_-zchu8t7H7wpadOp2M4hulE4ls2E9po",
+          "mode": "list",
+          "cachedResultName": "Clientes_centros",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/18AmMao31_e8_-zchu8t7H7wpadOp2M4hulE4ls2E9po/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 954126320,
+          "mode": "list",
+          "cachedResultName": "people-export-2026-05-26_12-58-27",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/18AmMao31_e8_-zchu8t7H7wpadOp2M4hulE4ls2E9po/edit#gid=954126320"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -512,
+        144
+      ],
+      "id": "c7ae256b-ce1a-4811-a4b3-f3b29e715c68",
+      "name": "Confirmar clientes anteriores",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "d0ab5Y6R9vmHtYdu",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        384,
+        48
+      ],
+      "id": "261a24c8-4de2-4d22-a98e-f53f7f865e1e",
+      "name": "Limit"
+    },
+    {
+      "parameters": {
+        "content": "## Limite (clave)\n\n### La idea es que se registren clientes de a uno, el operador no puede asignar de a montones.",
+        "height": 128,
+        "width": 288
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        64,
+        -96
+      ],
+      "typeVersion": 1,
+      "id": "c69407e4-0521-4b38-866b-6fcc6a31036c",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## Confirmación\n\n### Si el cliente se registra exitosamente, se le enviara un E-mail de confirmación al propietario.",
+        "height": 128,
+        "width": 320
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        944,
+        -208
+      ],
+      "typeVersion": 1,
+      "id": "9a5b4c93-ae1d-407a-bc54-8b830a0238cc",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "sendTo": "juanjo.okyt@gmail.com",
+        "subject": "Hubo un error, revise la agenda de clientes ‼️",
+        "message": "=Vuelva a revisar el Sheets de datos, posiblemente hay un error de tipeo 🤧",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        608,
+        240
+      ],
+      "id": "0b5fe3f1-0f3d-469d-abb6-b6e6b1312b9d",
+      "name": "Send a message1",
+      "webhookId": "598062f2-28d3-42dc-81d1-8b566d013b30",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "aQ0vcc2VYzLRqx9v",
+          "name": "Gmail OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "164b730e-51dd-4b32-8c4f-acd852c0f792",
+              "leftValue": "={{ $json.Estado_final }}",
+              "rightValue": "={{ $json.Estado_final }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "4a245104-0ba7-46b9-bcd9-60002c2b15db",
+              "leftValue": "={{ $json.Fecha_procesamiento }}",
+              "rightValue": "={{ $json.Fecha_procesamiento }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "97eff0cd-3fe3-40a2-8b69-317c875aa20c",
+              "leftValue": "={{ $('Append row in sheet').item.json.id }}",
+              "rightValue": "={{ $('Append row in sheet').item.json.id }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1056,
+        48
+      ],
+      "id": "8e721dd7-ebde-4dab-96ae-94993dbdccb0",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "sendTo": "juanjo.okyt@gmail.com",
+        "subject": "Error al registrar un nuevo cliente!!",
+        "message": "=<!DOCTYPE html> <html> <head>   <meta charset=\"UTF-8\"> </head>  <body style=\"font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;\">    <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">     <tr>       <td align=\"center\">          <table width=\"650\" cellpadding=\"0\" cellspacing=\"0\"         style=\"background-color: #ffffff; border-radius: 12px; padding: 30px; box-shadow: 0px 0px 12px rgba(0,0,0,0.1);\">            <tr>             <td align=\"center\">                <h1 style=\"color: #c62828;\">                 ❌ Error en el registro del cliente               </h1>                <p style=\"font-size: 16px; color: #555;\">                 El pipeline ETL detectó un problema durante el procesamiento del registro y el cliente no pudo ser almacenado correctamente.               </p>                <hr style=\"margin: 25px 0; border: none; border-top: 1px solid #ddd;\">                <h2 style=\"color: #333;\">                 ⚠️ Información del registro               </h2>                <table width=\"100%\" cellpadding=\"10\" cellspacing=\"0\"               style=\"border-collapse: collapse; margin-top: 15px;\">                  <tr style=\"background-color: #f8f8f8;\">                   <td><b>ID</b></td>                   <td>{{ $('Edit Fields1').item.json.Estado_final }}</td>                 </tr>                  <tr>                   <td><b>Fecha del intento</b></td>                   <td>{{ $now }}</td>                 </tr>                </table>                <hr style=\"margin: 25px 0; border: none; border-top: 1px solid #ddd;\">                <p style=\"font-size: 15px; color: #666;\">                 El registro fue enviado automáticamente al log de errores para su revisión manual.               </p>                <p style=\"font-size: 15px; color: #666;\">                 Se recomienda validar los datos de entrada y volver a ejecutar el proceso.               </p>                <p style=\"font-size: 12px; color: #999; margin-top: 30px;\">                 Mensaje automático generado por n8n.               </p>              </td>           </tr>          </table>        </td>     </tr>   </table>  </body> </html>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        1280,
+        144
+      ],
+      "id": "81ded2c2-dccf-4a17-bb20-e6293b796af8",
+      "name": "Send a message2",
+      "webhookId": "c47cc88d-9746-4856-b50e-bc9e90111fa7",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "aQ0vcc2VYzLRqx9v",
+          "name": "Gmail OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        384,
+        240
+      ],
+      "id": "ebad8709-9603-48ca-8ff6-bebd7cf22052",
+      "name": "Limit1"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.id }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty"
+                    },
+                    "id": "a1"
+                  },
+                  {
+                    "leftValue": "={{ $json.dni }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "any",
+                      "operation": "notEmpty"
+                    },
+                    "id": "a2"
+                  },
+                  {
+                    "leftValue": "={{ $json.first_name }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty"
+                    },
+                    "id": "a3"
+                  },
+                  {
+                    "leftValue": "={{ $json.last_name }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty"
+                    },
+                    "id": "a4"
+                  },
+                  {
+                    "leftValue": "={{ $json.birth_date }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty"
+                    },
+                    "id": "a5"
+                  },
+                  {
+                    "leftValue": "={{ $json.gender }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty"
+                    },
+                    "id": "a6"
+                  },
+                  {
+                    "leftValue": "={{ $json.neighborhood }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty"
+                    },
+                    "id": "a7"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "989a30a8-fbc9-4c21-9a91-8033dad79852",
+                    "leftValue": "={{ $json.id }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "11882d3e-cebe-4e55-ba95-3f7b21ada13c",
+                    "leftValue": "={{ $json.dni }}",
+                    "rightValue": 0,
+                    "operator": {
+                      "type": "number",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "6f709cd0-4ffa-4473-8106-6b91a10dab52",
+                    "leftValue": "={{ $json.first_name }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "71bcf599-f7a8-467e-b9a1-355f48287ced",
+                    "leftValue": "={{ $json.birth_date }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "dateTime",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "d653e399-6cde-48b9-ace6-c0ff8031dd8d",
+                    "leftValue": "={{ $json.gender }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "6f43bb6d-3041-46d7-8e40-d80bde28da7c",
+                    "leftValue": "={{ $json.neighborhood }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "319914c8-cbfc-4dc6-807b-7f9144d7f5da",
+                    "leftValue": "={{ $json.created_at }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "dateTime",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "cf6fd3d0-1869-4817-ba07-067b39a9a932",
+                    "leftValue": "={{ $json.last_name }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        160,
+        144
+      ],
+      "id": "5814d509-9784-4ebd-be39-e7b9c1548a13",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "content": "## Levantar agenda historica\n### El operador ya tenia una agenda con clientes que se habian registrado antes."
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -400,
+        -80
+      ],
+      "typeVersion": 1,
+      "id": "68e7d222-ef00-44a8-91f2-c2f6538797c6",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "content": "## Data-Check\n### Es importante monitorear, que no haya inconsisencias en los datos historicos.",
+        "height": 128
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -192,
+        336
+      ],
+      "typeVersion": 1,
+      "id": "7af6ad0e-03af-4151-a90a-14f2a4ce3e3b",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "content": "## Desiciones erroneas\n### pueden pasar si los registros no cumplen los requisitos.",
+        "height": 112,
+        "width": 288
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        928,
+        320
+      ],
+      "typeVersion": 1,
+      "id": "3ea64eb0-08d8-49e1-b630-375910609432",
+      "name": "Sticky Note6"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Confirmar clientes anteriores",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Code in Python",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in Python": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Confirmar clientes anteriores": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        []
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send a message2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit1": {
+      "main": [
+        [
+          {
+            "node": "Send a message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Limit1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Limit1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Limit1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Limit1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Limit1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Limit1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Limit1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Limit1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "1874a862-a726-4f72-8fee-b102a519c7d5",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "28cb07658960d852e6e24bb08ce1ec9290157db3f16a006e6affcfaded116231"
+  },
+  "id": "cc52vzEZpZYPWjPx",
+  "tags": []
+}
