@@ -1,0 +1,676 @@
+{
+  "name": "WebHooks order",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "c66ef04c-1d0c-4475-b55d-0265b1d06efc",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -1504,
+        -96
+      ],
+      "id": "418495cd-6f33-409f-86bb-53fb0a94a3b3",
+      "name": "Webhook",
+      "webhookId": "5ba27e9f-f0e5-4fd2-9377-81659343d485"
+    },
+    {
+      "parameters": {
+        "amount": 3
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -112,
+        -288
+      ],
+      "id": "9d263f69-d589-4d7b-b735-4796bb4fe750",
+      "name": "Wait",
+      "webhookId": "9aac5377-3502-4c11-898f-85bb0f23a26d"
+    },
+    {
+      "parameters": {
+        "content": "I run a food service where customers can place orders through various communication forms. I implemented a data flow to automate the process and prevent order delays. I believe this makes it easier to register customers and avoids having to process requests individually.",
+        "height": 80,
+        "width": 656
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1232,
+        -416
+      ],
+      "typeVersion": 1,
+      "id": "94335ed4-9ffc-4294-ae4b-5cfebd22cade",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0d66d9da-c440-424f-ae79-f7519a4d99f0",
+              "name": "Nombre",
+              "value": "Matias",
+              "type": "string"
+            },
+            {
+              "id": "313441cf-0d2e-4827-b74a-d46dd31fee2d",
+              "name": "Producto",
+              "value": "rosquillas de azucar",
+              "type": "string"
+            },
+            {
+              "id": "295bf371-34ee-49b6-835d-ee4124c8719b",
+              "name": "Cantidad",
+              "value": "5",
+              "type": "string"
+            },
+            {
+              "id": "ac0712d6-2ad6-46b6-82dd-11bb049ca5ec",
+              "name": "Monto",
+              "value": "6500",
+              "type": "string"
+            },
+            {
+              "id": "ed0da027-43e6-49c4-83c5-46e1587c9486",
+              "name": "Canal",
+              "value": "Web",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1008,
+        -128
+      ],
+      "id": "ea35e47c-48de-4445-b525-192c97e41930",
+      "name": "Register client",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1paE2YqS4cHQsGsQpCQmOJdc30_wPl0nuipxjlf--uMY",
+          "mode": "list",
+          "cachedResultName": "Curson8n",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1paE2YqS4cHQsGsQpCQmOJdc30_wPl0nuipxjlf--uMY/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 379172574,
+          "mode": "list",
+          "cachedResultName": "Hoja 2",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1paE2YqS4cHQsGsQpCQmOJdc30_wPl0nuipxjlf--uMY/edit#gid=379172574"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {
+            "Nombre": "={{ $json.Nombre }}",
+            "Producto": "={{ $json.Producto }}",
+            "Cantidad": "={{ $json.Cantidad }}",
+            "Monto": "={{ $json.Monto }}",
+            "Canal": "={{ $json.Canal }}"
+          },
+          "matchingColumns": [
+            "Nombre"
+          ],
+          "schema": [
+            {
+              "id": "Nombre",
+              "displayName": "Nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Producto",
+              "displayName": "Producto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Cantidad",
+              "displayName": "Cantidad",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Monto",
+              "displayName": "Monto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Canal",
+              "displayName": "Canal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -528,
+        -272
+      ],
+      "id": "69f4755a-06fe-433c-bdd4-9cf5b0d0f0f7",
+      "name": "Send Order",
+      "retryOnFail": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "d0ab5Y6R9vmHtYdu",
+          "name": "Google Sheets OAuth2 API"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "sendTo": "juanjo.okyt@gmail.com",
+        "subject": "Hola Juan , Has recibido un nuevo mensaje!",
+        "message": "=<div style=\"font-family: Arial, sans-serif; background-color: #f8f5f0; padding: 30px;\">\n  \n  <div style=\"max-width: 600px; margin: auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);\">\n    \n    <div style=\"background-color: #d97706; padding: 20px; text-align: center;\">\n      <h1 style=\"color: white; margin: 0;\">🥖 Nuevos pedidos en la panadería</h1>\n    </div>\n\n    <div style=\"padding: 30px; color: #333;\">\n      \n      <p style=\"font-size: 18px;\">\n        Hola <strong>Juan</strong>,\n      </p>\n\n      <p style=\"font-size: 16px; line-height: 1.6;\">\n        Te ha llegado <strong>un nuevo pedido</strong> a la panadería el día de hoy.\n      </p>\n\n      <div style=\"background-color: #fff7ed; border-left: 5px solid #f59e0b; padding: 20px; margin: 25px 0; border-radius: 8px;\">\n        \n        <p style=\"margin: 0 0 10px 0; font-size: 16px;\">\n          👤 <strong>Último cliente:</strong> {{ $json.Nombre }}\n        </p>\n\n        <p style=\"margin: 0 0 10px 0; font-size: 16px;\">\n          🛒 <strong>Pedido:</strong> {{ $json.Cantidad }} {{ $json.Producto }}\n        </p>\n\n        <p style=\"margin: 0 0 10px 0; font-size: 16px;\">\n          💰 <strong>Total a abonar:</strong> ${{ $json.Monto }}\n        </p>\n\n        <p style=\"margin: 0; font-size: 16px;\">\n          📱 <strong>Canal de contacto:</strong> {{ $json.Canal }}\n        </p>\n\n      </div>\n\n      <p style=\"font-size: 14px; color: #777;\">\n        Este mensaje fue generado automáticamente desde n8n.\n      </p>\n\n    </div>\n\n  </div>\n\n</div>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        112,
+        -288
+      ],
+      "id": "cd44dabe-f403-4fda-9a24-9262ad5771d6",
+      "name": "Message confirming order",
+      "webhookId": "d702d584-a762-4615-94a1-7c2ad61f4cd8",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "aQ0vcc2VYzLRqx9v",
+          "name": "Gmail OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "juanjo.okyt@gmail.com",
+        "subject": "Error ❌",
+        "message": "=<div style=\"font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 30px;\">      <div style=\"max-width: 600px; margin: auto; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);\">          <div style=\"background-color: #dc2626; padding: 20px; text-align: center;\">       <h1 style=\"color: white; margin: 0;\">⚠️ Error en automatización</h1>     </div>      <div style=\"padding: 30px; color: #333;\">              <p style=\"font-size: 18px;\">         Hola Juan,       </p>        <p style=\"font-size: 16px; line-height: 1.6;\">         Se produjo un error al intentar guardar un nuevo pedido en su registro.       </p>        <div style=\"background-color: #fef2f2; border-left: 5px solid #dc2626; padding: 20px; margin: 25px 0; border-radius: 8px;\">                  <p style=\"margin: 0 0 12px 0; font-size: 16px;\">           ❌ <strong>Estado:</strong> Falló la conexión de registro o escritura en Google Sheets         </p>          <p style=\"margin: 0 0 12px 0; font-size: 16px;\">           🕒 <strong>Fecha:</strong> {{ $now }}         </p>          <p style=\"margin: 0; font-size: 16px;\">           📄 <strong>Detalle del error:</strong><br>           {{ $json.error || 'No se recibió información adicional del error. Revice los datos de sheets' }}         </p>        </div>        <p style=\"font-size: 15px; line-height: 1.6;\">         Revisá las credenciales de Google Sheets, permisos del documento o el estado del workflow en n8n.       </p>        <p style=\"font-size: 14px; color: #777; margin-top: 30px;\">         Este mensaje fue generado automáticamente por n8n.       </p>      </div>    </div>  </div>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        -112,
+        0
+      ],
+      "id": "ef677935-c2d7-4d64-a879-6f3c04314a0e",
+      "name": "Error message order (debug)",
+      "webhookId": "84db0c6f-7e59-44b2-9f07-68fbd6007c29",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "aQ0vcc2VYzLRqx9v",
+          "name": "Gmail OAuth2 API"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "authentication": "webhook",
+        "content": "hola\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        -1248,
+        -96
+      ],
+      "id": "baf5eed8-66c3-49da-beab-3d1e9c4e776f",
+      "name": "Discord",
+      "webhookId": "68322848-953b-453d-8e63-f37fdbc457a5",
+      "credentials": {
+        "discordWebhookApi": {
+          "id": "DzcupZO70hvwXDuc",
+          "name": "Discord Webhook account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "1a82adae-6c8f-4369-aed9-c66c16c865d1",
+              "leftValue": "={{ $json.Nombre }}",
+              "rightValue": "={{ $json.Nombre }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "19eaa835-9804-4f11-a758-3d651545410b",
+              "leftValue": "={{ $json.Producto }}",
+              "rightValue": "={{ $json.Producto }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "c62160aa-bd53-49b5-9f18-1ddab6b1eca0",
+              "leftValue": "={{ $json.Cantidad }}",
+              "rightValue": "={{ $json.Cantidad }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "f5fe323a-9b15-43e6-ad84-db148bdce188",
+              "leftValue": "={{ $json.Monto }}",
+              "rightValue": "={{ $json.Monto }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "1ae9d78f-ffb2-4b75-b045-2007844ba46f",
+              "leftValue": "={{ $json.Canal }}",
+              "rightValue": "={{ $json.Canal }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -336,
+        -240
+      ],
+      "id": "9754e2ab-28b9-418b-b209-720500f8d09e",
+      "name": "If sheet values be.."
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.Nombre }}",
+                    "rightValue": "={{ $json.Nombre }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty"
+                    },
+                    "id": "824bc020-c722-4c69-af09-65e2fd3dae41"
+                  },
+                  {
+                    "leftValue": "={{ $json.Producto }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty"
+                    },
+                    "id": "5a5603ed-71be-4ed6-9e04-8cd1ac2a6c1d"
+                  },
+                  {
+                    "leftValue": "={{ $json.Cantidad }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty"
+                    },
+                    "id": "05c59b3c-bd45-4e40-84dd-35ef7b87382b"
+                  },
+                  {
+                    "leftValue": "={{ $json.Monto }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty"
+                    },
+                    "id": "2a40eeb2-185c-4937-ad4b-60397cf79e7d"
+                  },
+                  {
+                    "leftValue": "={{ $json.Canal }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty"
+                    },
+                    "id": "5817e6b8-12fb-4595-8760-44d2e9f9ce76"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "24e884de-7eff-4290-b39f-04451f729e53",
+                    "leftValue": "={{ $json.Nombre }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "5a5603ed-71be-4ed6-9e04-8cd1ac2a6c1d",
+                    "leftValue": "={{ $json.Producto }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "05c59b3c-bd45-4e40-84dd-35ef7b87382b",
+                    "leftValue": "={{ $json.Cantidad }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "2a40eeb2-185c-4937-ad4b-60397cf79e7d",
+                    "leftValue": "={{ $json.Monto }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "5817e6b8-12fb-4595-8760-44d2e9f9ce76",
+                    "leftValue": "={{ $json.Canal }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -768,
+        -144
+      ],
+      "id": "9c672de9-161a-4954-b9c1-0a645e4c73c0",
+      "name": "Switch desicions of register values"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -1376,
+        176
+      ],
+      "id": "77b3862e-b480-4319-b2c2-8a978671b268",
+      "name": "Schedule Trigger"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Discord",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Message confirming order",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Register client": {
+      "main": [
+        [
+          {
+            "node": "Switch desicions of register values",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Order": {
+      "main": [
+        [
+          {
+            "node": "If sheet values be..",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Message confirming order": {
+      "main": [
+        []
+      ]
+    },
+    "Discord": {
+      "main": [
+        [
+          {
+            "node": "Register client",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If sheet values be..": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Error message order (debug)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch desicions of register values": {
+      "main": [
+        [
+          {
+            "node": "Send Order",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Error message order (debug)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Error message order (debug)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Error message order (debug)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Error message order (debug)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Error message order (debug)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "42586779-f5c9-47b8-846c-9c06ad760369",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "28cb07658960d852e6e24bb08ce1ec9290157db3f16a006e6affcfaded116231"
+  },
+  "id": "0HMNoRpVDOM7dxxG",
+  "tags": []
+}
